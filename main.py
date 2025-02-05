@@ -103,7 +103,13 @@ def login():
         
         utente = Utente.query.filter_by(email=email, password=password).first()
         if utente:
-            return render_template("benvenuto.html", utente=utente)
+            logging.debug("User role: %s", utente.tipo_utente)  # Log the user role
+            if utente.tipo_utente == "organizzatore di eventi":
+                return render_template("organizzatore_index.html", utente=utente)
+            elif utente.tipo_utente == "utente_base":
+                return render_template("user_index.html", utente=utente)
+            else:
+                return "Unknown role", 403
         else:
             return "Credenziali errate", 401
     else:
