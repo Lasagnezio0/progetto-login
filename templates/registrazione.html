@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registrazione Utente</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/registrazione.css') }}">
+</head>
+<body>
+  
+  <form action="/registrazione" method="post">
+    <h1>Registrazione Utente</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required pattern="[a-zA-Z]+" title="Il nome deve contenere solo caratteri">
+
+    <label for="cognome">Cognome:</label>
+    <input type="text" id="cognome" name="cognome" required pattern="[a-zA-Z]+" title="Il cognome deve contenere solo caratteri">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="telefono">Numero di Telefono:</label>
+    <input type="tel" id="telefono" name="telefono" required pattern="[0-9]+" title="Il numero di telefono deve contenere solo numeri">
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required pattern=".{8,}" title="La password deve avere almeno 8 caratteri" >
+    
+    <label for="conferma_password">Conferma Password:</label>
+    <input type="password" id="conferma_password" name="conferma_password" required pattern=".{8,}" title="La password deve avere almeno 8 caratteri" onblur="confrontaPassword()">
+
+
+    <label for="tipo_utente">Tipo di Utente:</label>
+    <select id="tipo_utente" name="tipo_utente" required>
+      <option value="organizzatore_eventi">Organizzatore di Eventi</option>
+      <option value="utente_base">Utente Base</option>
+    </select>
+
+    <button type="submit">Registra</button>
+
+    <script src="{{ url_for('static', filename='javascript/registrazione.js') }}"></script>
+  </form>
+</body>
+</html>

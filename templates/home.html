@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Eventi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="/">Login</a></li>
+        <li><a href="{{ url_for('registrati') }}">Registrazione</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h1>Bienvenuti su Eventi!</h1>
+      <p>Eventi è un sito web che ti consente di creare e organizzare eventi in modo facile e veloce.</p>
+      <p>Con Eventi, puoi:</p>
+      <ul>
+        <li>Creare eventi e invitarne gli ospiti</li>
+        <li>Organizzare gli eventi in base alla data e all'ora</li>
+        <li>Visualizzare gli eventi in un calendario</li>
+        <li>Ricevere notifiche sugli eventi imminenti</li>
+      </ul>
+      <p>Eventi è il sito perfetto per:</p>
+      <ul>
+        <li>Organizzare feste e celebrazioni</li>
+        <li>Creare eventi di lavoro e conferenze</li>
+        <li>Pianificare viaggi e vacanze</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Come funziona?</h2>
+      <p>Per iniziare a utilizzare Eventi, devi registrarti e creare un account.</p>
+      <p>Dopo aver creato l'account, puoi iniziare a creare eventi e invitarne gli ospiti.</p>
+      <p>Eventi ti consente di organizzare gli eventi in base alla data e all'ora, e di visualizzare gli eventi in un calendario.</p>
+    </section>
+  </main>
+</body>
+</html>

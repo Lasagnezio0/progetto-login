@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="/">Login</a></li>
+                    <li><a href="{{ url_for('registrati') }}">Registrati</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section>
+                <h1>Benvenuto nel sito</h1>
+                <p>Entra nel tuo account per accedere alle tue informazioni personali e ai nostri servizi.</p>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <ul>
+                        {% for category, message in messages %}
+                            <li class="{{ category }}" style="text-align: center;color: green;">{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+                <form action="/login" method="post">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email"><br><br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password"><br><br>
+                    <input type="submit" value="Accedi">
+                </form>
+                <p>Non hai un account? <a href="{{ url_for('registrati') }}">Registrati ora</a></p>
+            </section>
+        </main>
+    </body>
+</html>

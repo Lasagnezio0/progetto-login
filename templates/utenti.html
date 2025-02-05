@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Utenti</title>
+</head>
+<body>
+    <h1>Utenti</h1>
+    <ul>
+    {% for utente in utenti %}
+        <li>
+            <p>L'id dell'utente è {{ utente.id }}. Il nome è {{ utente.nome }}. Il cognome è {{ utente.cognome }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
