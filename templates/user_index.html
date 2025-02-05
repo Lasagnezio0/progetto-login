@@ -2,9 +2,23 @@
 <html>
 <head>
     <title>Utente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user_index.css') }}">
 </head>
 <body>
-    <h1>Utente</h1>
-    <p>L'id dell'utente è {{ utente.id }}. Il nome è {{ utente.nome }}. Il cognome è {{ utente.cognome }}</p>
+    <h1>Benvenuto, {{ utente.nome }} {{ utente.cognome }}</h1>
+    <div class="eventi-container">
+        {% for evento, testo_bottone in eventi_con_testo_bottone %}
+            <div class="evento">
+                <h2>{{ evento.nome }}</h2>
+                <p><strong>Luogo:</strong> {{ evento.luogo }}</p>
+                <p><strong>Descrizione:</strong> {{ evento.descrizione }}</p>
+                <p><strong>Data Inizio:</strong> {{ evento.data_inizio }}</p>
+                <p><strong>Data Fine:</strong> {{ evento.data_fine }}</p>
+                <form action="{{ url_for('partecipa', evento_id=evento.id) }}" method="post">
+                    <button type="submit">{{ testo_bottone }}</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
 </body>
 </html>

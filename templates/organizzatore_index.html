@@ -2,9 +2,38 @@
 <html>
 <head>
     <title>Organizzatore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/organizzazione_index.css') }}">
 </head>
 <body>
     <h1>Utente</h1>
     <p>L'id dell'utente è {{ utente.id }}. Il nome è {{ utente.nome }}. Il cognome è {{ utente.cognome }}</p>
+
+    <button onclick="toggleForm()">+ CREA EVENTO</button>
+
+    <div id="overlay" onclick="toggleForm()"></div>
+
+    <div id="crea-evento-form">
+        <h2>Crea un nuovo evento</h2>
+        <form action="/crea_evento" method="post">
+            <label for="nome_evento">Nome Evento:</label>
+            <input type="text" id="nome_evento" name="nome_evento" required>
+
+            <label for="luogo_evento">Luogo Evento:</label>
+            <input type="text" id="luogo_evento" name="luogo_evento" required>
+
+            <label for="luogo_evento">Breve descrizione:</label>
+            <input type="text" id="descrizione" name="descrizione" required>
+
+            <label for="data_inizio">Data Inizio:</label>
+            <input type="date" id="data_inizio" name="data_inizio" required>
+
+            <label for="data_fine">Data Fine:</label>
+            <input type="date" id="data_fine" name="data_fine" required>
+
+            <button type="submit">Crea Evento</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='javascript/organizzazione_index.js') }}"></script>
 </body>
 </html>
